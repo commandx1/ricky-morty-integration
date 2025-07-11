@@ -40,16 +40,16 @@ export function CharacterFilters() {
   const hasActiveFilters = status || gender;
 
   return (
-    <div className="rounded-lg border border-orange-100/70 bg-card p-4 text-card-foreground shadow-sm">
+    <div className="rounded-lg border border-slate-700/50 bg-slate-800/80 backdrop-blur-sm p-4 text-white shadow-lg shadow-slate-900/50">
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-lg font-semibold">Filters</h2>
+        <h2 className="text-lg font-semibold text-emerald-400">Filters</h2>
         {hasActiveFilters && (
           <Button
-            variant="outline"
+            variant="ghost"
             size="sm"
             onClick={clearFilters}
-            className="text-xs px-2"
+            className="text-xs px-2 text-emerald-300 hover:text-emerald-200 hover:bg-emerald-500/10 border border-emerald-500/30"
           >
             Clear
           </Button>
@@ -60,7 +60,10 @@ export function CharacterFilters() {
       <div className="space-y-4">
         {/* Status Filter */}
         <div className="space-y-2">
-          <label htmlFor="status-filter" className="text-sm font-medium">
+          <label
+            htmlFor="status-filter"
+            className="text-sm font-medium text-slate-300"
+          >
             Status
           </label>
           <Select value={status || 'all'} onValueChange={handleStatusChange}>
@@ -80,7 +83,10 @@ export function CharacterFilters() {
 
         {/* Gender Filter */}
         <div className="space-y-2">
-          <label htmlFor="gender-filter" className="text-sm font-medium">
+          <label
+            htmlFor="gender-filter"
+            className="text-sm font-medium text-slate-300"
+          >
             Gender
           </label>
           <Select value={gender || 'all'} onValueChange={handleGenderChange}>
@@ -100,18 +106,16 @@ export function CharacterFilters() {
 
         {/* Active Filters Display */}
         {hasActiveFilters && (
-          <div className="pt-2 border-t">
-            <p className="text-xs text-muted-foreground mb-2">
-              Active filters:
-            </p>
+          <div className="pt-2 border-t border-slate-600/50">
+            <p className="text-xs text-slate-400 mb-2">Active filters:</p>
             <div className="flex flex-col gap-1">
               {status && (
-                <div className="inline-flex items-center rounded bg-primary/10 px-2 py-1 text-xs font-medium text-primary">
+                <div className="inline-flex items-center rounded bg-emerald-500/20 px-2 py-1 text-xs font-medium text-emerald-300 border border-emerald-500/30">
                   Status: {status}
                 </div>
               )}
               {gender && (
-                <div className="inline-flex items-center rounded bg-primary/10 px-2 py-1 text-xs font-medium text-primary">
+                <div className="inline-flex items-center rounded bg-emerald-500/20 px-2 py-1 text-xs font-medium text-emerald-300 border border-emerald-500/30">
                   Gender: {gender}
                 </div>
               )}

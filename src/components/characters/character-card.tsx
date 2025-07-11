@@ -37,25 +37,23 @@ export function CharacterCard({ character }: CharacterCardProps) {
     }
   };
 
-  const getGenderBadgeVariant = (
-    gender: string
-  ): 'default' | 'secondary' | 'outline' => {
+  const getGenderBadgeStyle = (gender: string) => {
     switch (gender.toLowerCase()) {
       case 'male':
-        return 'default';
+        return 'bg-blue-500/20 text-blue-300 border border-blue-500/30';
       case 'female':
-        return 'secondary';
+        return 'bg-pink-500/20 text-pink-300 border border-pink-500/30';
       case 'genderless':
-        return 'outline';
+        return 'bg-purple-500/20 text-purple-300 border border-purple-500/30';
       default:
-        return 'outline';
+        return 'bg-slate-500/20 text-slate-300 border border-slate-500/30';
     }
   };
 
   return (
     <Card
-      className={`group relative overflow-hidden transition-all duration-200 hover:shadow-xl shadow-sm border-orange-100/50 bg-white/95 backdrop-blur-sm flex flex-col h-full ${
-        isSelected ? 'ring-2 ring-primary' : ''
+      className={`group relative overflow-hidden transition-all duration-200 hover:shadow-2xl hover:shadow-emerald-500/20 shadow-lg shadow-slate-900/50 border-slate-700/50 bg-slate-800/80 backdrop-blur-sm flex flex-col h-full ${
+        isSelected ? 'ring-2 ring-emerald-400 shadow-emerald-400/30' : ''
       }`}
     >
       <CardContent className="p-0 flex-1 flex flex-col">
@@ -95,42 +93,46 @@ export function CharacterCard({ character }: CharacterCardProps) {
 
         {/* Character Info - Flex container for proper spacing */}
         <div className="p-4 flex-1 flex flex-col">
-          <h3 className="mb-2 text-lg font-semibold leading-tight">
+          <h3 className="mb-2 text-lg font-semibold leading-tight text-white">
             {character.name}
           </h3>
 
           {/* Character Details - Flex grow to take available space */}
           <div className="flex-1">
-            <div className="mb-3 space-y-1 text-sm text-muted-foreground">
+            <div className="mb-3 space-y-1 text-sm text-slate-300">
               <p>
-                <span className="font-medium">Species:</span>{' '}
+                <span className="font-medium text-emerald-400">Species:</span>{' '}
                 {character.species}
               </p>
               {character.type && (
                 <p>
-                  <span className="font-medium">Type:</span> {character.type}
+                  <span className="font-medium text-emerald-400">Type:</span>{' '}
+                  {character.type}
                 </p>
               )}
               <p>
-                <span className="font-medium">Origin:</span>{' '}
+                <span className="font-medium text-emerald-400">Origin:</span>{' '}
                 {character.origin.name}
               </p>
               <p>
-                <span className="font-medium">Location:</span>{' '}
+                <span className="font-medium text-emerald-400">Location:</span>{' '}
                 {character.location.name}
               </p>
             </div>
 
             {/* Gender Badge */}
             <div className="mb-3">
-              <Badge variant={getGenderBadgeVariant(character.gender)}>
+              <Badge
+                variant="outline"
+                className={`${getGenderBadgeStyle(character.gender)}`}
+              >
                 {character.gender}
               </Badge>
             </div>
           </div>
 
           {/* Episodes Count - Always at bottom of content */}
-          <p className="text-xs text-muted-foreground">
+          <p className="text-xs text-slate-400">
             Appears in {character.episode.length} episode
             {character.episode.length !== 1 ? 's' : ''}
           </p>

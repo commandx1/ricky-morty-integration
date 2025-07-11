@@ -36,10 +36,10 @@ export function CharacterList({ initialData }: CharacterListProps) {
     return (
       <div className="flex min-h-[400px] items-center justify-center">
         <div className="text-center">
-          <h3 className="text-lg font-semibold text-destructive">
+          <h3 className="text-lg font-semibold text-red-400">
             Error Loading Characters
           </h3>
-          <p className="text-sm text-muted-foreground mt-1">
+          <p className="text-sm text-slate-300 mt-1">
             {error instanceof Error ? error.message : 'Something went wrong'}
           </p>
           <Button
@@ -62,8 +62,10 @@ export function CharacterList({ initialData }: CharacterListProps) {
     return (
       <div className="flex min-h-[400px] items-center justify-center">
         <div className="text-center">
-          <h3 className="text-lg font-semibold">No Characters Found</h3>
-          <p className="text-sm text-muted-foreground mt-1">
+          <h3 className="text-lg font-semibold text-white">
+            No Characters Found
+          </h3>
+          <p className="text-sm text-slate-300 mt-1">
             Try adjusting your filters to see more results.
           </p>
         </div>
@@ -75,7 +77,7 @@ export function CharacterList({ initialData }: CharacterListProps) {
     <div className="space-y-6">
       {/* Results Info */}
       <div className="flex items-center justify-between">
-        <div className="text-sm text-muted-foreground">
+        <div className="text-sm text-emerald-300 font-medium">
           Showing {characters.length} characters
           {data?.info && (
             <span>
@@ -164,7 +166,7 @@ function Pagination({
       {visiblePages.map((page, index) => (
         <React.Fragment key={index}>
           {page === '...' ? (
-            <span className="px-2 text-sm text-muted-foreground">...</span>
+            <span className="px-2 text-sm text-slate-400">...</span>
           ) : (
             <Button
               variant={currentPage === page ? 'default' : 'outline'}

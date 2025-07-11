@@ -60,10 +60,14 @@ export default async function HomePage({ searchParams }: HomePageProps) {
   const initialData = await fetchCharactersSSR(resolvedSearchParams);
 
   return (
-    <div className="min-h-screen bg-orange-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-700 via-purple-800 to-emerald-900 relative overflow-hidden">
+      {/* Animated cosmic particles */}
+      <div className="absolute inset-0 bg-gradient-to-t from-transparent via-emerald-500/5 to-purple-500/10"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-teal-400/20 via-transparent to-transparent"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-purple-600/20 via-transparent to-transparent"></div>
       <Header />
 
-      <main className="container mx-auto px-4 py-8">
+      <main className="container mx-auto px-4 py-8 relative z-10">
         <div className="grid gap-8 lg:grid-cols-5">
           {/* Sidebar with Filters - Narrower */}
           <aside className="lg:col-span-1">
@@ -79,10 +83,10 @@ export default async function HomePage({ searchParams }: HomePageProps) {
             <div className="space-y-6">
               {/* Page Header */}
               <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tight">
+                <h2 className="text-3xl font-bold tracking-tight text-white drop-shadow-lg">
                   Characters
                 </h2>
-                <p className="text-muted-foreground">
+                <p className="text-slate-300">
                   Discover and explore characters from the Rick and Morty
                   universe. Use filters to find your favorite characters by
                   status and gender.
@@ -111,27 +115,28 @@ export default async function HomePage({ searchParams }: HomePageProps) {
       </main>
 
       {/* Footer */}
-      <footer className="border-t bg-orange-100/50 border-orange-200 mt-16">
-        <div className="container mx-auto px-4 py-8">
+      <footer className="border-t border-emerald-500/20 bg-slate-900/60 backdrop-blur-md mt-16 relative z-10">
+        <div className="absolute inset-0 bg-gradient-to-r from-purple-600/10 via-teal-500/10 to-emerald-500/10"></div>
+        <div className="container mx-auto px-4 py-8 relative z-10">
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
             <div className="text-center md:text-left">
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-slate-300">
                 Built with Next.js 15, TypeScript, and Tailwind CSS
               </p>
-              <p className="text-xs text-muted-foreground mt-1">
+              <p className="text-xs text-slate-400 mt-1">
                 Data from{' '}
                 <a
                   href="https://rickandmortyapi.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="underline hover:text-foreground"
+                  className="underline hover:text-emerald-400 transition-colors"
                 >
                   The Rick and Morty API
                 </a>
               </p>
             </div>
             <div className="flex items-center gap-4">
-              <p className="text-xs text-muted-foreground">
+              <p className="text-xs text-slate-400">
                 © 2025 Rick & Morty Character Explorer
               </p>
             </div>

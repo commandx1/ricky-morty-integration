@@ -31,6 +31,7 @@ interface CharacterStore {
   // Favorites actions
   toggleFavorite: (characterId: number) => void;
   isFavorite: (characterId: number) => boolean;
+  clearFavorites: () => void;
 
   // UI actions
   setIsLoading: (loading: boolean) => void;
@@ -168,6 +169,15 @@ export const useCharacterStore = create<CharacterStore>()(
         const { favorites } = get();
         return favorites.includes(characterId);
       },
+
+      clearFavorites: () =>
+        set(
+          {
+            favorites: [],
+          },
+          false,
+          'clearFavorites'
+        ),
 
       // UI actions
       setIsLoading: loading =>
