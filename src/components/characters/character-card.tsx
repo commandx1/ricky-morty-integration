@@ -54,7 +54,7 @@ export function CharacterCard({ character }: CharacterCardProps) {
 
   return (
     <Card
-      className={`group relative overflow-hidden transition-all duration-200 hover:shadow-lg flex flex-col h-full ${
+      className={`group relative overflow-hidden transition-all duration-200 hover:shadow-xl shadow-sm border-orange-100/50 bg-white/95 backdrop-blur-sm flex flex-col h-full ${
         isSelected ? 'ring-2 ring-primary' : ''
       }`}
     >

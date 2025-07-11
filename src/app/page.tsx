@@ -60,7 +60,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
   const initialData = await fetchCharactersSSR(resolvedSearchParams);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-orange-50">
       <Header />
 
       <main className="container mx-auto px-4 py-8">
@@ -111,7 +111,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
       </main>
 
       {/* Footer */}
-      <footer className="border-t bg-muted/50 mt-16">
+      <footer className="border-t bg-orange-100/50 border-orange-200 mt-16">
         <div className="container mx-auto px-4 py-8">
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
             <div className="text-center md:text-left">
@@ -132,7 +132,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
             </div>
             <div className="flex items-center gap-4">
               <p className="text-xs text-muted-foreground">
-                © 2024 Rick & Morty Character Explorer
+                © 2025 Rick & Morty Character Explorer
               </p>
             </div>
           </div>

@@ -13,7 +13,7 @@ export function Header() {
     useCharacterStore();
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b bg-orange-50/95 backdrop-blur supports-[backdrop-filter]:bg-orange-50/80 border-orange-100">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         {/* Logo and Title */}
         <div className="flex items-center space-x-4">

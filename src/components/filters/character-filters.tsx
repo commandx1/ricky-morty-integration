@@ -40,7 +40,7 @@ export function CharacterFilters() {
   const hasActiveFilters = status || gender;
 
   return (
-    <div className="rounded-lg border bg-card p-4 text-card-foreground shadow-sm">
+    <div className="rounded-lg border border-orange-100/70 bg-card p-4 text-card-foreground shadow-sm">
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-lg font-semibold">Filters</h2>
