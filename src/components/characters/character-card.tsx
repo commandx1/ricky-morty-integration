@@ -54,11 +54,11 @@ export function CharacterCard({ character }: CharacterCardProps) {
 
   return (
     <Card
-      className={`group relative overflow-hidden transition-all duration-200 hover:shadow-lg ${
+      className={`group relative overflow-hidden transition-all duration-200 hover:shadow-lg flex flex-col h-full ${
         isSelected ? 'ring-2 ring-primary' : ''
       }`}
     >
-      <CardContent className="p-0">
+      <CardContent className="p-0 flex-1 flex flex-col">
         {/* Character Image */}
         <div className="relative aspect-square overflow-hidden">
           <Image
@@ -93,39 +93,43 @@ export function CharacterCard({ character }: CharacterCardProps) {
           </Button>
         </div>
 
-        {/* Character Info */}
-        <div className="p-4">
+        {/* Character Info - Flex container for proper spacing */}
+        <div className="p-4 flex-1 flex flex-col">
           <h3 className="mb-2 text-lg font-semibold leading-tight">
             {character.name}
           </h3>
 
-          <div className="mb-3 space-y-1 text-sm text-muted-foreground">
-            <p>
-              <span className="font-medium">Species:</span> {character.species}
-            </p>
-            {character.type && (
+          {/* Character Details - Flex grow to take available space */}
+          <div className="flex-1">
+            <div className="mb-3 space-y-1 text-sm text-muted-foreground">
               <p>
-                <span className="font-medium">Type:</span> {character.type}
+                <span className="font-medium">Species:</span>{' '}
+                {character.species}
               </p>
-            )}
-            <p>
-              <span className="font-medium">Origin:</span>{' '}
-              {character.origin.name}
-            </p>
-            <p>
-              <span className="font-medium">Location:</span>{' '}
-              {character.location.name}
-            </p>
+              {character.type && (
+                <p>
+                  <span className="font-medium">Type:</span> {character.type}
+                </p>
+              )}
+              <p>
+                <span className="font-medium">Origin:</span>{' '}
+                {character.origin.name}
+              </p>
+              <p>
+                <span className="font-medium">Location:</span>{' '}
+                {character.location.name}
+              </p>
+            </div>
+
+            {/* Gender Badge */}
+            <div className="mb-3">
+              <Badge variant={getGenderBadgeVariant(character.gender)}>
+                {character.gender}
+              </Badge>
+            </div>
           </div>
 
-          {/* Gender Badge */}
-          <div className="mb-3">
-            <Badge variant={getGenderBadgeVariant(character.gender)}>
-              {character.gender}
-            </Badge>
-          </div>
-
-          {/* Episodes Count */}
+          {/* Episodes Count - Always at bottom of content */}
           <p className="text-xs text-muted-foreground">
             Appears in {character.episode.length} episode
             {character.episode.length !== 1 ? 's' : ''}
@@ -133,6 +137,7 @@ export function CharacterCard({ character }: CharacterCardProps) {
         </div>
       </CardContent>
 
+      {/* Footer - Always at bottom */}
       <CardFooter className="p-4 pt-0">
         <Button
           variant={isSelected ? 'default' : 'outline'}
