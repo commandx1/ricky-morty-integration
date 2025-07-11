@@ -40,8 +40,9 @@ export function CharacterFilters() {
   const hasActiveFilters = status || gender;
 
   return (
-    <div className="flex flex-col gap-4 rounded-lg border bg-card p-6 text-card-foreground shadow-sm">
-      <div className="flex items-center justify-between">
+    <div className="rounded-lg border bg-card p-6 text-card-foreground shadow-sm">
+      {/* Header */}
+      <div className="flex items-center justify-between mb-6">
         <h2 className="text-lg font-semibold">Filters</h2>
         {hasActiveFilters && (
           <Button
@@ -55,9 +56,10 @@ export function CharacterFilters() {
         )}
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+      {/* Filter Controls - Horizontal Layout */}
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6">
         {/* Status Filter */}
-        <div className="space-y-2">
+        <div className="space-y-2 sm:col-span-1 lg:col-span-2 xl:col-span-2">
           <label htmlFor="status-filter" className="text-sm font-medium">
             Status
           </label>
@@ -77,7 +79,7 @@ export function CharacterFilters() {
         </div>
 
         {/* Gender Filter */}
-        <div className="space-y-2">
+        <div className="space-y-2 sm:col-span-1 lg:col-span-2 xl:col-span-2">
           <label htmlFor="gender-filter" className="text-sm font-medium">
             Gender
           </label>
@@ -95,24 +97,28 @@ export function CharacterFilters() {
             </SelectContent>
           </Select>
         </div>
-      </div>
 
-      {/* Active Filters Display */}
-      {hasActiveFilters && (
-        <div className="flex flex-wrap gap-2 pt-2">
-          <span className="text-sm text-muted-foreground">Active filters:</span>
-          {status && (
-            <div className="inline-flex items-center rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">
-              Status: {status}
+        {/* Active Filters Display - Takes remaining space */}
+        {hasActiveFilters && (
+          <div className="flex flex-wrap items-end gap-2 sm:col-span-2 lg:col-span-4 xl:col-span-2">
+            <div className="flex flex-wrap gap-2">
+              <span className="text-sm text-muted-foreground self-center">
+                Active:
+              </span>
+              {status && (
+                <div className="inline-flex items-center rounded-full bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary">
+                  Status: {status}
+                </div>
+              )}
+              {gender && (
+                <div className="inline-flex items-center rounded-full bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary">
+                  Gender: {gender}
+                </div>
+              )}
             </div>
-          )}
-          {gender && (
-            <div className="inline-flex items-center rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">
-              Gender: {gender}
-            </div>
-          )}
-        </div>
-      )}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

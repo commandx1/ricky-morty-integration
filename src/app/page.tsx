@@ -64,48 +64,38 @@ export default async function HomePage({ searchParams }: HomePageProps) {
       <Header />
 
       <main className="container mx-auto px-4 py-8">
-        <div className="grid gap-8 lg:grid-cols-4">
-          {/* Sidebar with Filters */}
-          <aside className="lg:col-span-1">
-            <div className="sticky top-24">
-              <Suspense fallback={<FiltersSkeleton />}>
-                <CharacterFilters />
-              </Suspense>
-            </div>
-          </aside>
+        <div className="space-y-8">
+          {/* Page Header */}
+          <div className="space-y-2">
+            <h2 className="text-3xl font-bold tracking-tight">Characters</h2>
+            <p className="text-muted-foreground">
+              Discover and explore characters from the Rick and Morty universe.
+              Use filters to find your favorite characters by status and gender.
+            </p>
+          </div>
 
-          {/* Main Content */}
-          <div className="lg:col-span-3">
-            <div className="space-y-6">
-              {/* Page Header */}
-              <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tight">
-                  Characters
-                </h2>
-                <p className="text-muted-foreground">
-                  Discover and explore characters from the Rick and Morty
-                  universe. Use filters to find your favorite characters by
-                  status and gender.
-                </p>
-              </div>
+          {/* Filters - Full Width */}
+          <div className="w-full">
+            <Suspense fallback={<FiltersSkeleton />}>
+              <CharacterFilters />
+            </Suspense>
+          </div>
 
-              {/* Character List */}
-              <Suspense fallback={<CharacterListSkeleton />}>
-                <CharacterList
-                  initialData={
-                    initialData
-                      ? {
-                          characters: initialData.results,
-                          totalPages: initialData.info.pages,
-                          currentPage: parseInt(
-                            resolvedSearchParams.page || '1'
-                          ),
-                        }
-                      : undefined
-                  }
-                />
-              </Suspense>
-            </div>
+          {/* Character List - Full Width */}
+          <div className="w-full">
+            <Suspense fallback={<CharacterListSkeleton />}>
+              <CharacterList
+                initialData={
+                  initialData
+                    ? {
+                        characters: initialData.results,
+                        totalPages: initialData.info.pages,
+                        currentPage: parseInt(resolvedSearchParams.page || '1'),
+                      }
+                    : undefined
+                }
+              />
+            </Suspense>
           </div>
         </div>
       </main>
@@ -146,8 +136,11 @@ export default async function HomePage({ searchParams }: HomePageProps) {
 function FiltersSkeleton() {
   return (
     <div className="rounded-lg border bg-card p-6 shadow-sm">
-      <div className="space-y-4">
+      <div className="flex items-center justify-between mb-4">
         <div className="h-6 w-20 bg-muted rounded animate-pulse" />
+        <div className="h-8 w-20 bg-muted rounded animate-pulse" />
+      </div>
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <div className="space-y-3">
           <div className="h-4 w-16 bg-muted rounded animate-pulse" />
           <div className="h-10 w-full bg-muted rounded animate-pulse" />
